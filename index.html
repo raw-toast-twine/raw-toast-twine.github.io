@@ -11,19 +11,31 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="DEATH TWINE" startnode="1" creator="Twine" creator-version="2.3.5" ifid="69EF265D-4BCD-40B6-9183-E15D6D5A9592" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar tw-icon.redo {
-	display: none;
+<tw-storydata name="DEATH TWINE" startnode="1" creator="Twine" creator-version="2.3.5" ifid="69EF265D-4BCD-40B6-9183-E15D6D5A9592" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+ 
+tw-sidebar tw-icon.redo {
+    display: none;
 }
 tw-sidebar tw-icon.undo {
-	display: none;
+    display: none;
 }
 tw-story {
-  font-family: "courier", serif;
-  color: Black;
-  background-color: AntiqueWhite;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Intro" tags="" position="314,167" size="200,100">(set: $a to (css: &quot;color:black; background-color:Yellow&quot;))
-(set: $b to (css: &quot;color:white; background-color:Black&quot;))
-(set: $d to (css: &quot;color:red; font-style:italic; background-color:AntiqueWhite&quot;))
+  font-family: 'Courier Prime', monospace;
+  color: #31363C;
+  background-color: #f3c053;
+}
+.enchantment-link, tw-link, tw-link.visited {
+  color: #3a557d;
+}
+.enchantment-link:hover, tw-link:hover, tw-link.visited:hover {
+  color: #7a97c1;
+}
+tw-hook {
+  line-height: 1em;
+  padding: 0.25em 0;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Intro" tags="" position="314,167" size="200,100">(set: $a to (css: &quot;background-color:#a2b26f; font-weight:bold&quot;))
+(set: $b to (css: &quot;background-color:#d7636c; font-weight:bold&quot;))
+(set: $d to (css: &quot;color:#6e4040; font-style:italic; font-weight:bold&quot;))
 (set: $day to 20)
 
 &lt;h1 style=&quot;text-align: center;&quot;&gt;DEATH TWINE&lt;/h1&gt;
@@ -80,7 +92,7 @@ $b[Your courage and determination helped secure you your position as officer. Yo
 $b[You were pleasantly surprised to find out that one of your childhood friends ended up under your command. You know he is an able soldier and has your back.]
 [[CLICK TO PROCEED-&gt;Night]] </tw-passagedata><tw-passagedata pid="11" name="NML" tags="" position="637,637" size="100,100">Bruh wait this is like the same as the sentry thing
 
-[sentry thing]&lt;Proceed|(click-goto: ?Proceed, &quot;Sentry&quot;)</tw-passagedata><tw-passagedata pid="12" name="Sentry-pre" tags="" position="871,807.5" size="100,100">[[Handoff to Soldier-&gt;Sentry]] </tw-passagedata><tw-passagedata pid="13" name="OfficerDawn" tags="" position="1458,369" size="100,100">$b[Another dawn in the trenches. You start rousing your men to stand to. Everyone began fixing their bayonets and prepare for a possible dawn assault by the enemy.]
+[sentry thing]&lt;Proceed|(click-goto: ?Proceed, &quot;Sentry&quot;)</tw-passagedata><tw-passagedata pid="12" name="Sentry-pre" tags="" position="871,807" size="100,100">[[Handoff to Soldier-&gt;Sentry]] </tw-passagedata><tw-passagedata pid="13" name="OfficerDawn" tags="" position="1458,369" size="100,100">$b[Another dawn in the trenches. You start rousing your men to stand to. Everyone began fixing their bayonets and prepare for a possible dawn assault by the enemy.]
 $b[This morning you give orders to]
 [[Go over the top and attack the enemy’s trench-&gt;Attack]] 
 [[Wait for a possible enemy offensive-&gt;Defend]] 
