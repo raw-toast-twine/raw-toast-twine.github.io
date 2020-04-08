@@ -46,7 +46,7 @@ window.audio.loop = true;
 window.toggle_audio = function() {
 	if (window.audio_status == "🔇") {
 		if (isNaN(window.audio.duration)) {
-			alert("Sound file not found!");
+			alert("Sound file not found! Maybe wait a bit for it to load.");
 			return;
 		}
 		window.audio_status = "🔈";
