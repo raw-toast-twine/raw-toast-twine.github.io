@@ -52,8 +52,6 @@ To start my story off you and your [friend]&lt;1| (click-append: ?1)
 |3&gt;[Continue](click-replace: ?3)[There are two characters. A soldier and an officer. You guys can argue over who is who. Parts of the story belonging to the soldier will be $a[higlighted like this], while parts that correspond to the officer&#39;s story will be $b[redacted (sort of)]. Plain parts like this are for both you and your friend to read!
 $d[As your wonderful narrator, I may throw in some juicy quips. They will look like this]
 
-I was unable to incorporate audio for this twine so please feel free to pull up some ww1 background noises on your own.
-
 [[I have my friend, we are both briefed and ready to go-&gt;Experts]]]</tw-passagedata><tw-passagedata pid="3" name="Experts" tags="" position="563,168" size="100,100">Nations of Framany and Gerance are at war once again $d[(As if I don’t have enough on my plate)] but things have become a stalemate as both sides dig a network of trenches stretching from the Alp sea in the north to the Belgin mountains in the south.
 
 [[CLICK TO PROCEED-&gt;Expo1]] </tw-passagedata><tw-passagedata pid="4" name="Expo1" tags="" position="740,135" size="100,100">$a[You are an infantry soldier deployed near the town of Verdin on the western front.]
@@ -225,7 +223,7 @@ You position your rifle on the sandbags that make up the top of the parapet and 
 1- Die trying to stay away on sentry duty
 2- Die in no man&#39;s land
 3- Defender dies
-4- Both empathize and refuse to kill each other. (when asked to shoot and/ or run through with bayonet hesitate for 8 seconds)</tw-passagedata><tw-passagedata pid="35" name="Footer" tags="footer" position="171,166" size="100,100">(set: $a to (css: &quot;background-color:#a2b26f; font-weight:bold&quot;))
+4- Both empathize and refuse to kill each other. (when asked to shoot and/ or run through with bayonet hesitate for 8 seconds)</tw-passagedata><tw-passagedata pid="35" name="Footer" tags="footer" position="172,166" size="100,100">(set: $a to (css: &quot;background-color:#a2b26f; font-weight:bold&quot;))
 (set: $b to (css: &quot;background-color:#d7636c; font-weight:bold&quot;))
 (set: $d to (css: &quot;color:#6e4040; font-style:italic; font-weight:bold&quot;))
 (set: $day to 20)
@@ -237,7 +235,7 @@ var audio_ctrl = document.getElementById(&quot;audio_ctrl&quot;);
 audio_ctrl.style.cursor = &quot;pointer&quot;;
 audio_ctrl.style.fontSize = &quot;0.75em&quot;;
 var audio = document.createElement(&quot;audio&quot;);
-audio.src = &quot;audio.mp3&quot;;
+audio.src = &quot;https://raw.githubusercontent.com/raw-toast-twine/raw-toast-twine.github.io/master/audio.mp3&quot;;
 audio.loop = true;
 audio_ctrl.addEventListener(&quot;click&quot;, e =&gt; {
 	if (audio_ctrl.innerHTML == &quot;🔇&quot;) {
