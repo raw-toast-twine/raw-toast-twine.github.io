@@ -35,7 +35,28 @@ tw-sidebar {
 }
 tw-story[tags~="Blackout"] {
   background-color: Black;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Intro" tags="" position="314,167" size="200,100">&lt;h1 style=&quot;text-align: center;&quot;&gt;Trenches Like Twine&lt;/h1&gt;
+}
+#audio_ctrl {
+  font-size: 0.75em;
+  cursor: pointer;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">window.audio_status = "🔇";
+window.audio = document.createElement("audio");
+window.audio.src = "https://raw.githubusercontent.com/raw-toast-twine/raw-toast-twine.github.io/master/audio.mp3";
+window.audio.loop = true;
+window.toggle_audio = function() {
+	if (window.audio_status == "🔇") {
+		if (isNaN(window.audio.duration)) {
+			alert("Sound file not found!");
+			return;
+		}
+		window.audio_status = "🔈";
+		window.audio.currentTime = Math.floor(Math.random()*window.audio.duration);
+		window.audio.play();
+	} else {
+		window.audio_status = "🔇";
+		window.audio.pause();
+	}
+};</script><tw-passagedata pid="1" name="Intro" tags="" position="314,167" size="200,100">&lt;h1 style=&quot;text-align: center;&quot;&gt;Trenches Like Twine&lt;/h1&gt;
 &lt;p style=&quot;text-align: center;&quot;&gt;a WW1 inspired two person Twine game brought by someone you probably don’t know yet
 
 &quot;[[Two person Twine?!-&gt;Newbies]]&quot;
@@ -223,33 +244,19 @@ You position your rifle on the sandbags that make up the top of the parapet and 
 1- Die trying to stay away on sentry duty
 2- Die in no man&#39;s land
 3- Defender dies
-4- Both empathize and refuse to kill each other. (when asked to shoot and/ or run through with bayonet hesitate for 8 seconds)</tw-passagedata><tw-passagedata pid="35" name="Footer" tags="footer" position="172,166" size="100,100">(set: $a to (css: &quot;background-color:#a2b26f; font-weight:bold&quot;))
+4- Both empathize and refuse to kill each other. (when asked to shoot and/ or run through with bayonet hesitate for 8 seconds)</tw-passagedata><tw-passagedata pid="35" name="Footer" tags="footer" position="173,166" size="100,100">(set: $a to (css: &quot;background-color:#a2b26f; font-weight:bold&quot;))
 (set: $b to (css: &quot;background-color:#d7636c; font-weight:bold&quot;))
 (set: $d to (css: &quot;color:#6e4040; font-style:italic; font-weight:bold&quot;))
 (set: $day to 20)
 (append: ?sidebar)[(link: &quot;↻&quot;)[(reload:)]
 
-&lt;span id=&quot;audio_ctrl&quot;&gt;🔇&lt;/span&gt;{
+&lt;span id=&quot;audio_ctrl&quot;&gt;&lt;/span&gt;{
 &lt;script&gt;
 var audio_ctrl = document.getElementById(&quot;audio_ctrl&quot;);
-audio_ctrl.style.cursor = &quot;pointer&quot;;
-audio_ctrl.style.fontSize = &quot;0.75em&quot;;
-var audio = document.createElement(&quot;audio&quot;);
-audio.src = &quot;https://raw.githubusercontent.com/raw-toast-twine/raw-toast-twine.github.io/master/audio.mp3&quot;;
-audio.loop = true;
+audio_ctrl.innerHTML = window.audio_status;
 audio_ctrl.addEventListener(&quot;click&quot;, e =&gt; {
-	if (audio_ctrl.innerHTML == &quot;🔇&quot;) {
-		if (isNaN(audio.duration)) {
-			alert(&quot;Sound file not found!&quot;);
-			return;
-		}
-		audio_ctrl.innerHTML = &quot;🔈&quot;;
-		audio.currentTime = Math.floor(Math.random()*audio.duration);
-		audio.play();
-	} else {
-		audio_ctrl.innerHTML = &quot;🔇&quot;;
-		audio.pause();
-	}
+	window.toggle_audio();
+	audio_ctrl.innerHTML = window.audio_status;
 });
 &lt;/script&gt;
 }]</tw-passagedata><tw-passagedata pid="36" name="SoldierEnough" tags="" position="1571,1624" size="100,100">$a[Enough, I can’t stand to kill anymore]
