@@ -72,27 +72,29 @@ window.pause_audio = function() {
 		}
 		document.getElementById("audio_ctrl").innerHTML = window.audio_status;
 };</script><tw-passagedata pid="1" name="Intro" tags="" position="314,167" size="200,100">&lt;h1 style=&quot;text-align: center;&quot;&gt;Trenches Like Twine&lt;/h1&gt;
-&lt;p style=&quot;text-align: center;&quot;&gt;a WW1 inspired two person Twine game brought by someone you probably don’t know yet
+&lt;p style=&quot;text-align: center;&quot;&gt;a WW1 inspired two-person Twine game brought by someone you probably don’t know yet
 
-&quot;[[Two person Twine?!-&gt;Newbies]]&quot;
+&quot;[[Two-person Twine?!-&gt;Newbies]]&quot;
 
 &quot;[[I know what&#39;s going on.-&gt;Experts]]&quot;
 
 [[Ending Help for Graders]]
 
-[[Sources]]</tw-passagedata><tw-passagedata pid="2" name="Newbies" tags="" position="388,333" size="100,100">That’s Right!
+[[Sources]]
+
+(set: $day to 22)</tw-passagedata><tw-passagedata pid="2" name="Newbies" tags="" position="388,333" size="100,100">That’s Right!
 Two person twine! I typed it.
 To start my story off you and your [friend]&lt;1| (click-append: ?1)
 [ $d[(imaginary friend is fine)]] get to select which character you wish to fill the [shoes of]&lt;2|(click-append: ?2)[ $d[(trust me, war leaves plenty of empty ones around)]].
 
-|3&gt;[Continue](click-replace: ?3)[There are two characters. A soldier and an officer. You guys can argue over who is who. Parts of the story belonging to the soldier will be $a[higlighted like this], while parts that correspond to the officer&#39;s story will be $b[redacted (sort of)]. Plain parts like this are for both you and your friend to read!
-$d[As your wonderful narrator, I may throw in some juicy quips. They will look like this]
+|3&gt;[Continue](click-replace: ?3)[There are two characters. A soldier and an officer. You guys can argue over who is who. Parts of the story belonging to the soldier will be $a[higlighted in green], while parts that correspond to the officer&#39;s story will be $b[in red]. Plain parts like this are for both you and your friend to read!
+$d[As your wonderful narrator, I may throw in some juicy quips. They will look like this.]
 
-[[I have my friend, we are both briefed and ready to go-&gt;Experts]]]</tw-passagedata><tw-passagedata pid="3" name="Experts" tags="" position="563,168" size="100,100">Nations of Framany and Gerance are at war once again $d[(As if I don’t have enough on my plate)] but things have become a stalemate as both sides dig a network of trenches stretching from the Alp sea in the north to the Belgin mountains in the south.
+[[I have my friend, we are both briefed and ready to go-&gt;Experts]]]</tw-passagedata><tw-passagedata pid="3" name="Experts" tags="" position="563,168" size="100,100">Nations of Framany and Gerance are at war once again $d[(As if I don’t have enough on my plate)], but things have become a stalemate as both sides dig a network of trenches stretching from the Alp sea in the north to the Belgin mountains in the south.
 
 [[CLICK TO PROCEED-&gt;Expo1]] </tw-passagedata><tw-passagedata pid="4" name="Expo1" tags="" position="740,135" size="100,100">$a[You are an infantry soldier deployed near the town of Verdin on the western front.]
 
-|3&gt;[Continue](click-replace: ?3)[$a[You were drafted into this war and are praying that you can miraculously|1&gt;[ survive ](click-replace: ?1)[ survive $d[ (Ironically, survival is the ultimate desire of the majority of the soldiers I have the misfortune of meeting in war) ]]long enough to see your wife and children again. On the bright side, your officer is a childhood friend.]
+|3&gt;[Continue](click-replace: ?3)[$a[You were drafted into this war and are praying that you can miraculously|1&gt;[ survive ](click-replace: ?1)[ survive $d[ (Ironically, survival is the ultimate desire of most soldiers I have the misfortune of meeting in war) ]]long enough to see your wife and children again. On the bright side, your commanding officer is a childhood friend. He can be a bit much at times, but you know he means well and will do what he thinks is just.]
 
 [[Hand Off to Officer-&gt;Expo2]]]</tw-passagedata><tw-passagedata pid="5" name="Night" tags="" position="1045,514" size="100,100">It&#39;s December $day, 1915.
 
@@ -105,38 +107,38 @@ $b[You look at the gloomy countenance of your childhood friend to give him his o
 
 [[Get ready. We&#39;re launching an attack tonight-&gt;Attack]] 
 
-[[We are to patrol No Man Land -&gt;Patrol]] </tw-passagedata><tw-passagedata pid="6" name="Sentry" tags="" position="1044,854" size="100,100">(set: $handled to false)$a[Your officer friend assigns you to sentry duty first tonight so you can have a more undisrupted sleep later on. But you must stay awake. Falling asleep on duty means death by firing squad. ]
+[[We are to patrol No Man Land -&gt;Patrol]] </tw-passagedata><tw-passagedata pid="6" name="Sentry" tags="" position="1044,854" size="100,100">(set: $handled to false)$a[Your officer friend assigns you to sentry duty first tonight so you can have better sleep later on, undisrupted. But you must stay awake. Falling asleep on duty means death by firing squad. $d[(I’m not kidding; These guys don’t play around!)]]
 
 $a[You need to notify your officer if you hear any enemy patrols or raids.]
 
 [[I hear something-&gt;falseAlarm]] 
 
-{[(live: 5s)[
+{[(live: 10s)[
 (set: $handled to false)
 [Don&#39;t doze off]&lt;z|(click-replace: ?z)[ (set: $handled to true)]
 ]
-(event: when time &gt; 19s)[
+(event: when time &gt; 24s)[
 	(go-to: &quot;Success&quot;)
 	[[drawArrow-&gt;Success]]
 ]
-(event: when time &gt; 7s and time &lt; 8s and $handled is false)[(go-to: &quot;SentryDeadBlackout&quot;)]
+(event: when time &gt; 22s and time &lt; 23s and $handled is false)[(go-to: &quot;SentryDeadBlackout&quot;)]
 (event: when time &gt; 12s and time &lt; 13s and $handled is false)[(go-to: &quot;SentryDeadBlackout&quot;)]
 (event: when time &gt; 17s and time &lt; 18s and $handled is false)[
 	(go-to: &quot;SentryDeadBlackout&quot;)
 	[[drawArrow-&gt;SentryDeadBlackout]]
 ]
-]}</tw-passagedata><tw-passagedata pid="7" name="SentryDead" tags="" position="876,1084" size="100,100">$a[Someone kicks your leg and jolts you awake. You try regaining your barings... Oh No! Dread washes over you as you realize the consequences of your offense. You will never see your wife and children again, but not because the enemy shot you. Because your fellow men [will]&lt;1|(click-replace: ?1)[ $d[Brutal, I know. But historically accurate. Don’t believe me? Invent the time machine, go back to 1915, fall asleep on sentry duty, and see for yourself. p.s. I will meet you shortly after)]]...]
+]}</tw-passagedata><tw-passagedata pid="7" name="SentryDead" tags="" position="876,1084" size="100,100">$a[Someone kicks your leg and jolts you awake. You try regaining your barings... Oh No! Dread washes over you as you realize the consequences of your offense. You will never see your wife and children again, but not because the enemy shot you. Because your fellow men [will]&lt;1|(click-replace: ?1)[ $d[Brutal, I know. But historically accurate. Don’t believe me? Invent the time machine, go back to 1915, fall asleep on sentry duty, and see for yourself. P.S. I will meet you shortly after)]]...]
 
 Start Over(click-goto: &quot;Start Over&quot;, &#39;Intro&#39;)</tw-passagedata><tw-passagedata pid="8" name="Success" tags="" position="1230,409" size="100,100">$a[Night time : 2400]
 $a[Your two hour night watch ends without any complications. You are free to retire to the support line for some some shut eye.]
 
 [[Handoff to Officer-&gt;OfficerDawn]] </tw-passagedata><tw-passagedata pid="9" name="Nothing" tags="" position="464,556" size="100,100">Lolol get pranked bro i havent done this yet (there wasnt anything there tho)</tw-passagedata><tw-passagedata pid="10" name="Expo2" tags="" position="774,298" size="100,100">$b[You are an officer in charge of the 42nd infantry division deployed near the town of Verdin on the western front.]
 
-|3&gt;[Continue](click-replace: ?3)[$b[You were one of the first to |1&gt;[enlist] in this war(click: ?1)[ $d[(Cough, cough, chauvinist... What? Oh, nothing...)]].]
+|3&gt;[Continue](click-replace: ?3)[$b[You were one of the first to |1&gt;[enlist] in this war.(click: ?1)[ $d[(Cough, cough, chauvinist... What? Oh, nothing...)]]]
 
-$b[Your courage and determination helped secure you your position as officer. You hope to make your parents |2&gt;[proud](click: ?2)[ $d[(Your father is a veteran of the glorious two-week war against Prussland and died when you were seven. Your mother has never stopped worrying about you since. Waving you goodbye as your boarded the train to the front nearly broke her tired heart. But she loves you too much to hamper your ambitions, lofty as they are)]].]
+$b[Your courage and determination helped secure you your position as officer. You hope to make your parents |2&gt;[proud].(click: ?2)[ $d[(Your father is a veteran of the glorious two-week war against Prussland and died when you were seven. Your mother has never stopped worrying about you since. Waving you goodbye as your boarded the train to the front nearly broke her tired heart. But she loves you too much to hamper your ambitions, lofty as they are.)]]]
 
-$b[You were pleasantly surprised to find out that one of your childhood friends ended up under your command. You know he is an able soldier and has your back.]
+$b[You were pleasantly surprised to find out that one of your childhood friends ended up under your command. You know he will be an able soldier and has your back.]
 
 [[CLICK TO PROCEED-&gt;Night]]]</tw-passagedata><tw-passagedata pid="11" name="NML" tags="" position="462,660" size="100,100">Bruh wait this is like the same as the sentry thing
 
@@ -149,12 +151,10 @@ $b[This morning you give orders to]
 [[Go over the top and attack the enemy’s trench-&gt;Attack]] 
 
 [[Wait for a possible enemy offensive-&gt;Defend]] </tw-passagedata><tw-passagedata pid="14" name="Attack" tags="" position="1541,632" size="100,100">$b[You frown, this will be a hard thing to break to your [men,]&lt;1| (click-replace: ?1)[{
-men 
-$d[(Man why is it that so few people are glad to see me. I would consider myself to be delightful company after enduring those hellish trenches),]}] but it’s time to perform your duty to your country.]
+men,  
+$d[(Man, why is it that so few people are glad to see me? I would consider myself to be delightful company after enduring those hellish trenches...)]}] but it’s time to perform your duty to your country.]
 
-[[Click To Proceed-&gt;OfficerAssaultPrep]] </tw-passagedata><tw-passagedata pid="15" name="Defend" tags="" position="1682,365" size="100,100">[[Handoff to Soldier-&gt;SoldierDawn]]</tw-passagedata><tw-passagedata pid="16" name="OfficerAssaultPrep" tags="" position="1543,752" size="100,100">$b[You position yourself on your ladder, and anxiously await the signal to mount the parapet. You’re certain I await you in no man’s [land.]&lt;1| (click-replace: ?1)[{
-land
-$d[(I don’t mean to await anyone, people just like to throw themselves at my feet in miserable heaps during war like a pile of dirty laundry).]}]]
+[[Click To Proceed-&gt;OfficerAssaultPrep]] </tw-passagedata><tw-passagedata pid="15" name="Defend" tags="" position="1682,365" size="100,100">[[Handoff to Soldier-&gt;SoldierDawn]]</tw-passagedata><tw-passagedata pid="16" name="OfficerAssaultPrep" tags="" position="1543,752" size="100,100">$b[You position yourself on your ladder, and anxiously await the signal to mount the parapet. You’re certain I await you in [No Man’s Land.]&lt;1| (click-append: ?1)[{ $d[(I don’t mean to await anyone, honestly. People just like to throw themselves at my feet in miserable heaps during war like...piles of dirty laundry or something.)]}]]
 
 [[Click To Proceed-&gt;OfficerAssault1]] </tw-passagedata><tw-passagedata pid="17" name="OfficerAssault1" tags="" position="1539,869" size="100,100">$b[[Wait For It...-&gt;OfficerAssault2]]</tw-passagedata><tw-passagedata pid="18" name="OfficerAssault2" tags="" position="1536,996" size="100,100">$b[[[Not now...-&gt;OfficerAssault3]]]</tw-passagedata><tw-passagedata pid="19" name="OfficerAssault3" tags="" position="1538,1105" size="100,100">$b[Go! Go! Go!] 
 
@@ -164,11 +164,9 @@ $d[(I don’t mean to await anyone, people just like to throw themselves at my f
 (set: $attacker to &quot;officer&quot;)
 (set: $y to $a)
 (set: $z to $b)
-}$a[You peer out into no mans land from your position in your trench and see the enemy ushering forth with [battle cries]&lt;1| (click-replace: ?1)[{battle cries
+}$a[You peer out into No Man&#39;s Land from your position in the trench and see the enemy streaming forth as their [battle cries]&lt;1| grow ever louder. (click: ?1)[{ $d[(I never understood battle cries...it always feels like soldiers are yelling at me for no good reason. Why are they mad at me? I did not decide their fate. One could say I am everyone&#39;s fate...but it’s not like I want to be or anything.)]}]
 
-$d[(I never understood battle cries, I feel like soldiers are yelling at me for no good reason. Why are they mad at me, I did not decide their fate. After all I am everyone&#39;s fate.)]}]
-
-You position your rifle on the sandbags that make up the top of the parapet and start firing randomly at the enemy]
+You position your rifle on the sandbags that make up the top of the parapet and start firing randomly at the enemy.]
 
 [[Shoot!-&gt;SoldierKillStreak]]</tw-passagedata><tw-passagedata pid="22" name="SoldierKillStreak" tags="" position="1567,1495" size="100,100">$a[You fire out into the distance and a soldier falls]
 (set: $kills to 1)(set: $mercyDelay to 7s)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;SoldierEnough&quot;)]
@@ -180,49 +178,47 @@ $a[Shoot again]&lt;1| (click-replace: ?1)[[and another hit]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;SoldierEnough&quot;)]
 [Fire!]&lt;4| (click-replace: ?4)[[Now a fifth...]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;SoldierEnough&quot;)]
-You did not set out to be a killer… “I wonder if they have families” you think to yourself...
-[Shoot]&lt;5| (click-replace: ?5)[[A sixth soldier down…]
+You did not set out to be a killer... “I wonder if they have families,” you think to yourself...
+[Shoot]&lt;5| (click-replace: ?5)[[A sixth soldier down...]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;SoldierEnough&quot;)]
-Your hands are trembling; you feel dirty and rotten but not because of the muddy trench.
+Your hands are trembling; You feel dirty and rotten, but not because of the muddy trench.
 [Shoot]&lt;6| (click-replace: ?6)[[A seventh man falls. From how many [children]&lt;7| (click-replace: ?7)[{
 [children]
-$d[(Spoiler - their names are Susan, Max, Eugene, Marienette, Adrien…) ]}] have you stolen a loving father?]
+$d[(Spoiler: 14. Their names are Susan, Max, Eugene, Marienette, Adrien...) ]}] have you stolen a loving father?]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;SoldierEnough&quot;)]
 [Shoot again]&lt;8| (click-replace: ?8)[[That&#39;s eight now.](set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;SoldierEnough&quot;)]
-$d[Man when are you going to have enough compunction to stop shooting!!!!]
+$d[Man when are you going to have enough compunction to stop shooting?!]
 [Shoot again]&lt;9| (click-replace: ?9)[[...]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;SoldierEnough&quot;)]
-$d[Oh still giving me corpses to visit? Wow even after I narrated how much this killing tore at your soul.]
-[Shoot]&lt;10| (click-replace: ?10)[[Seriously?!!!]
+$d[Oh. Still giving me corpses to visit? Wow, even after I narrated how much this killing tore at your soul and all?]
+[Shoot]&lt;10| (click-replace: ?10)[[Seriously?!]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;SoldierEnough&quot;)]
-$d[This is not how I envisioned my story would go. This is not some video game where you get to rack up a kill streak. There is no prize to taking lives.]
+$d[This is not how I envisioned my story would go. This is not a video game that rewards you for a kill streak. There is no prize to taking lives.]
 [Shoot again]&lt;11| (click-replace: ?11)[[That&#39;s eleven.]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;SoldierEnough&quot;)]
-$d[Man You’re Brutal! if I was not the guy who had to drag your sorry soul out of your lifeless body soon, I would say you don’t have a soul.]
-[Fire]&lt;12| (click-replace: ?12)[ [12!!!]
+$d[Man, you’re nrutal! If I wasn&#39;t the guy who had to drag your sorry soul out of your lifeless body soon, I would say you didn’t have a soul.]
+[Fire]&lt;12| (click-replace: ?12)[ [That&#39;s twelve now!]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;SoldierEnough&quot;)]
-You spot an platton officer on the field.
+You spot a platoon officer on the field.
 But you killed so much.
 Do you hesitate?
 [[Show Mercy-&gt;SoldierEnough]]
-[Shoot]&lt;13| (click-replace: ?13)[$d[Nope you shot him. You just went out and shot him.](set: $kills to $kills + 1)
-$d[Man I can’t understand you humans. Is this funny to you? I am trying to write a heart wrenching historically accurate WW1 twine to emphasize that your choices don’t matter in life because no matter what you do, you always come to me. But NOO you just have to make a game out of it. Well I am sorry. I am the narrator. If you click that button one more time I swear I will write your character off for dead prematurely and your never see your wife again.]
-[[shoot-&gt;funEnding]]]]]]]]]]]]]]</tw-passagedata><tw-passagedata pid="23" name="funEnding" tags="" position="1334,1627" size="100,100">Oh nO!  YoUr cHaRaCtEr WaS sHoT. NoW yOu HaVe tO eXpLaiN tO YoUr fRiEnd WhY You NeEd To STarT ThE tWinE OvEr AgAiN
+[Shoot]&lt;13| (click-replace: ?13)[$d[Nope, you shot him. You just went out and shot him.](set: $kills to $kills + 1)
+$d[Man, I can’t understand you humans. Is this funny to you? I am trying to write a heart-wrenching, historically accurate WW1 Twine. But NOO, you just have to make a game out of it. Well, I&#39;m sorry. I am the narrator. If you click that button one more time I swear I will write your character off for dead prematurely and your will never see your wife again.]
+[[shoot-&gt;funEnding]]]]]]]]]]]]]]</tw-passagedata><tw-passagedata pid="23" name="funEnding" tags="" position="1334,1627" size="100,100">Oh nO! YoUr cHaRaCtEr WaS sHoT. NoW yOu HaVe tO eXpLaiN tO YoUr fRiEnd WhY You NeEd To STarT ThE tWinE OvEr AgAiN
 [[StArT oVeR yOu lItTle tUrD-&gt;Intro]] 
 
-(fyi if you refrain from shooting other humans for a measly 8 seconds or so, you get to show me you actually have a heart, and I will move on to another part of the story)</tw-passagedata><tw-passagedata pid="24" name="SoldierDawn" tags="" position="1688,503" size="100,100">$a[Its an hour before dawn. You are awaken by one of your fellow men and told to ready your rifle to stand to.]
+(FYI, if you refrain from shooting other humans for a measly 8 seconds or so, you get to show me you actually have a heart. I&#39;ll move on to another part of the story. Capiche?)</tw-passagedata><tw-passagedata pid="24" name="SoldierDawn" tags="" position="1688,503" size="100,100">$a[It&#39;s an hour before dawn. You are awakened by one of your fellow men and told to ready your rifle and stand to.]
 
-[[Click to Proceed-&gt;SoldierOdds]]</tw-passagedata><tw-passagedata pid="25" name="SoldierAssaultOrders" tags="" position="1685,634" size="100,100">$a[A new order comes down from high command… your blatton has been choose to be apart of an assault on the enemy trench… You’re going [over the top]&lt;1|(click-replace: ?1)[over the top
+[[Click to Proceed-&gt;SoldierOdds]]</tw-passagedata><tw-passagedata pid="25" name="SoldierAssaultOrders" tags="" position="1685,634" size="100,100">$a[A new order comes down from high command... your platoon has been chosen to lead an assault on the enemy trench... You’re going [over the top]&lt;1|(click-replace: ?1)[over the top
 $d[(That is the nicest way of telling someone that they will have be having brunch with me)]].]
 
 [[Desert]]
 
 [[Follow Orders-&gt;SoldierAssaultPrep]]</tw-passagedata><tw-passagedata pid="26" name="Desert" tags="" position="1847,638" size="100,100">$d[Oh poor you, do you have no sense of honor?
-It couldn&#39;t be that you are scared of me, I am such a fun guy!]
+It couldn&#39;t be that you are scared of me, right? I am such a fun guy!]
 
-[[Restart-&gt;Intro]] </tw-passagedata><tw-passagedata pid="27" name="SoldierAssaultPrep" tags="" position="1684,758" size="100,100">$a[You position yourself on your ladder, and anxiously await the signal to mount the parapet. You’re certain I await you in no man’s [land.]&lt;1| (click-replace: ?1)[{
-land
-$d[(I don’t mean to await anyone, people just like to throw themselves at my feet in miserable heaps during war like a pile of dirty laundry).]}]]
+[[Restart-&gt;Intro]] </tw-passagedata><tw-passagedata pid="27" name="SoldierAssaultPrep" tags="" position="1684,758" size="100,100">$a[You position yourself on your ladder, and anxiously await the signal to mount the parapet. You’re certain I await you in [No Man’s Land.]&lt;1| (click: ?1)[ {$d[(I don’t mean to await anyone, honestly. People just like to throw themselves at my feet in miserable heaps during war like...pile of dirty laundry or something.)]}]]
 
 [[Click To Proceed-&gt;SoldierAssault1]] </tw-passagedata><tw-passagedata pid="28" name="SoldierAssault1" tags="" position="1681,874" size="100,100">$a[[[Wait For It...-&gt;SoldierAssault2]]]</tw-passagedata><tw-passagedata pid="29" name="SoldierAssault2" tags="" position="1681,992" size="100,100">$a[[[Not now...-&gt;SoldierAssault3]]]</tw-passagedata><tw-passagedata pid="30" name="SoldierAssault3" tags="" position="1701,1111" size="100,100">$a[Go! Go! Go!] 
 
@@ -238,38 +234,36 @@ $b[Shoot again]&lt;1| (click-replace: ?1)[[and another hit]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;OfficerEnough&quot;)]
 [Fire!]&lt;4| (click-replace: ?4)[[Now a fifth...]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;OfficerEnough&quot;)]
-[Shoot]&lt;5| (click-replace: ?5)[[A sixth soldier down…]
+[Shoot]&lt;5| (click-replace: ?5)[[A sixth soldier down...]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;OfficerEnough&quot;)]
 [Shoot]&lt;6| (click-replace: ?6)[[A seventh man falls.]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;OfficerEnough&quot;)]
 [Shoot again]&lt;8| (click-replace: ?8)[[That&#39;s eight now.]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;OfficerEnough&quot;)]
-[Shoot again]&lt;9| (click-replace: ?9)[[9]
+[Shoot again]&lt;9| (click-replace: ?9)[[Nine.]
 (set: $kills to $kills + 1)(set: $startTime to time)(event: when time-$startTime &gt; $mercyDelay)[(go-to: &quot;OfficerEnough&quot;)]
-[Shoot]&lt;10| (click-replace: ?10)[ [10 Kills in the name of the fatherland. No man can flee from your sights]
+[Shoot]&lt;10| (click-replace: ?10)[ [Ten Kills in the name of the fatherland. No man can flee from your sights.]
 (set: $kills to $kills + 1)
-Then you see something
-Wait… That soldier, he looks so much like your childhood friend but he is in an enemy uniform. You line up your sights, finger resting on the trigger.
+Wait, that soldier... He looks so much like your childhood friend. You line up your sights, finger resting on the trigger.
 [[Shoot-&gt;OfficerNoMercy]]
 [[Show Mercy-&gt;OfficerEnough]]
 ]]]]]]]]]</tw-passagedata><tw-passagedata pid="32" name="SoldierAssault4" tags="" position="1708,1234" size="100,100">[[Handoff to Officer-&gt;OfficerDefend]]</tw-passagedata><tw-passagedata pid="33" name="OfficerDefend" tags="" position="1707,1362" size="100,100">{(set: $attacker to &quot;soldier&quot;)
 (set: $defender to &quot;officer&quot;)
 (set: $y to $b)
 (set: $z to $a)
-}$b[You peer out into no mans land from your position in your trench and see the enemy ushering forth with [battle cries]&lt;1| (click-replace: ?1)[{battle cries
+}$b[You peer out into No Man&#39;s Land from your position in the trench and see the enemy streaming forth as their [battle cries]&lt;1| grow ever louder.(click: ?1)[ {$d[(I never understood battle cries...it always feels like soldiers are yelling at me for no good reason. Why are they mad at me? I did not decide their fate. One could say I am everyone&#39;s fate…but it’s not like I want to be or anything.)]}]
 
-$d[(I never understood battle cries, I feel like soldiers are yelling at me for no good reason. Why are they mad at me, I did not decide their fate. After all I am everyone&#39;s fate.)]}]
+You position your rifle on the sandbags that make up the top of the parapet and start firing randomly at the enemy.]
 
-You position your rifle on the sandbags that make up the top of the parapet and start firing randomly at the enemy]
-
-[[Shoot!-&gt;OfficerKillStreak]]</tw-passagedata><tw-passagedata pid="34" name="Ending Help for Graders" tags="" position="250,317" size="100,100">Explanations of endings:
-1- Die trying to stay away on sentry duty
-2- Die in no man&#39;s land
-3- Defender dies
-4- Both empathize and refuse to kill each other. (when asked to shoot and/ or run through with bayonet hesitate for 8 seconds)</tw-passagedata><tw-passagedata pid="35" name="Footer" tags="footer" position="173,166" size="100,100">(set: $a to (css: &quot;background-color:#a2b26f; font-weight:bold&quot;))
+[[Shoot!-&gt;OfficerKillStreak]]</tw-passagedata><tw-passagedata pid="34" name="Ending Help for Graders" tags="" position="250,317" size="100,100">Some of the endings you might get:
+- Fall asleep
+- Desert
+- Die in the chaos of No Man&#39;s Land
+- Get your rear personally handed to you
+- Hesitate in a crucial moment
+- Christmas</tw-passagedata><tw-passagedata pid="35" name="Footer" tags="footer" position="173,166" size="100,100">(set: $a to (css: &quot;background-color:#a2b26f; font-weight:bold&quot;))
 (set: $b to (css: &quot;background-color:#d7636c; font-weight:bold&quot;))
 (set: $d to (css: &quot;color:#6e4040; font-style:italic; font-weight:bold&quot;))
-(set: $day to 20)
 (append: ?sidebar)[(link: &quot;↻&quot;)[(reload:)]
 
 &lt;span id=&quot;audio_ctrl&quot;&gt;&lt;/span&gt;{
@@ -292,7 +286,7 @@ Continue(click-replace: &quot;Continue&quot;)[{$z[Barbed wire! Up ahead!]}
 
 [[Turn left and navigate through the gaps in the wire fences!-&gt;NavigatesBarbedWire]]
 
-[[Plow on through-&gt;DeathByBarbedWire]]]</tw-passagedata><tw-passagedata pid="40" name="DeathByBarbedWire" tags="" position="1802,1869" size="100,100">$z[You are running too fast to stop and momentum carries you into the barbed wire trappings. Man, a human caught in a web of their own making. All fish and game could look upon the sight with twisted satisfaction… all the spiteful ones, at least.]
+[[Plow on through-&gt;DeathByBarbedWire]]]</tw-passagedata><tw-passagedata pid="40" name="DeathByBarbedWire" tags="" position="1802,1869" size="100,100">$z[You are running too fast to stop and momentum carries you into the barbed wire trappings. Man, a human caught in a web of their own making. All fish and game could look upon the sight with twisted satisfaction... all the spiteful ones, at least.]
 
 [[Restart-&gt;Intro]] </tw-passagedata><tw-passagedata pid="41" name="DiveIntoMud" tags="" position="1492,1861" size="100,100">$z[You dive down onto the mud and start to crawl your way under the wire. It’s slow progress and your momentum begins to dwindle as gunshots ring out above your head.]
 
@@ -312,7 +306,7 @@ $z[You clear the barbed wire! But there is still a solid 80 meters between you a
 [[Keep charging forward-&gt;DeathInTheOpenChance]]
 [[Zigzag to the left-&gt;DeathInTheOpenChance]]
 [[Dive to the right-&gt;DeathInTheOpenChance]]
-[[Take a sec to fire off your rifle-&gt;DeathInTheOpenChance]]</tw-passagedata><tw-passagedata pid="45" name="ShotInMud" tags="" position="1336,1991" size="100,100">$z[Suddenly a bullet tears through your chest and the ground rushes up to meet your face. $d[Charging into No Man’s land is practically suicide - it is implicitly my land, after all - but I guess “death’s land” doesn’t have a good ring to it. How about... Suicide Lane? Probably not good enough for morale. Start-The-Twine-Over-Too-Many-Times-To-Count-Land-And-Wonder-If-The-Ending-For-This-Path-Is-Worth-It-Land? Nah, too long. Better luck next time?]]
+[[Take a sec to fire off your rifle-&gt;DeathInTheOpenChance]]</tw-passagedata><tw-passagedata pid="45" name="ShotInMud" tags="" position="1336,1991" size="100,100">$z[Suddenly a bullet tears through your chest and the ground rushes up to meet your face. $d[Charging into No Man’s land is practically suicide - it is implicitly my land, after all - but I guess “Death’s Land” doesn’t have a good ring to it. How about... Suicide Lane? Probably not great for morale. Start-The-Twine-Over-Too-Many-Times-To-Count-Land-And-Wonder-If-The-Ending-For-This-Path-Is-Worth-It-Land? Nah, too long. Better luck next time?]]
 
 [[Restart-&gt;Intro]] </tw-passagedata><tw-passagedata pid="46" name="ShotInMudChance" tags="" position="1485,1991" size="100,100">{(if: (50 * $kills / 10 + 10) &gt;= (random: 1,100))[
 	(go-to: &quot;ShotInMud&quot;)
@@ -323,17 +317,17 @@ $z[You clear the barbed wire! But there is still a solid 80 meters between you a
 [[drawsArrow-&gt;ClearedBarbedWire]]</tw-passagedata><tw-passagedata pid="47" name="ShotInBarbedWire" tags="" position="1906,2038" size="100,100">$z[$d[Oh, looks like you were. Shot, that is. What can I say? Life&#39;s unfair. This Twine is, of course, as lifelike as video games can be. Anywho, I will be taking your soul from here. No hard feelings.]]
 
 [[Restart-&gt;Intro]] </tw-passagedata><tw-passagedata pid="48" name="FreezesOverwhelmedByHorror" tags="" position="1909,2151" size="100,100">$z[You freeze, overwhelmed by the horror going on around you. Mangled bodies litter the ground as men charge hopelessly across the decimated landscape. You have never seen this much death before. Looking toward the sky, you wait for me to see you off.]
-I oblige.
+$d[I oblige.]
 
-[[Restart-&gt;Intro]] </tw-passagedata><tw-passagedata pid="49" name="FreezesAndDiesByFriend" tags="" position="1911,2258" size="100,100">$z[$d[You get shot in the chest. Man, that’s some bad luck. I wonder who shot you. Do you want to know??
+[[Restart-&gt;Intro]]</tw-passagedata><tw-passagedata pid="49" name="FreezesAndDiesByFriend" tags="" position="1911,2258" size="100,100">$z[$d[You get shot in the chest. Man, that’s some bad luck. I wonder who shot you. Do you want to know??
 
-Not really? Too bad, I’m telling you anyway. It was…
+Not really? Too bad, I’m telling you anyway. It was...
 
 The person sitting next to you! I even told him/her not to.]]
 
-[[Restart-&gt;Intro]] </tw-passagedata><tw-passagedata pid="50" name="ShotInTheChest" tags="" position="1814,2450" size="100,100">$z[$d[You get shot in the chest. I am going to be frank here: All of those options were just as likely to get you shot. Most times in war, it’s just random stupid luck that determines the survivors. It truly is heart wrenching to witness this macabre lottery.]]
+[[Restart-&gt;Intro]]</tw-passagedata><tw-passagedata pid="50" name="ShotInTheChest" tags="" position="1814,2450" size="100,100">$z[$d[You get shot in the chest. I am going to be frank here: All of those options were just as likely to get you shot. Most times in war, it’s just random stupid luck that determines the survivors. It truly is heart-wrenching to witness this macabre lottery.]]
 
-[[Restart-&gt;Intro]] </tw-passagedata><tw-passagedata pid="51" name="ArtilleryShellExplodes" tags="" position="1678,2443" size="100,100">$z[An artillery shell explodes in your location. I walk over to your buried mangled body and loosen your soul from your body. I throw it over my shoulder and move to the next body. Looks like today will be a long day for me. Hmmm... better play some music, then(click-replace: &quot;then&quot;)[ $d[(HEY SIRI PLAY DESPACITO!!!.... Oh right this is a text-based game. Dang it)]].]
+[[Restart-&gt;Intro]] </tw-passagedata><tw-passagedata pid="51" name="ArtilleryShellExplodes" tags="" position="1678,2443" size="100,100">$z[An artillery shell explodes near you. I walk over to your mangled body and loosen your soul from it. I throw it over my shoulder and move on to the next. Looks like today will be a long day for me. Hmmm... better play some music, then.](click: &quot;then&quot;)[ $d[(This is so sad. Alexa... Oh, right- this is a text-based game. Dang it.)]]
 
 [[Restart-&gt;Intro]] </tw-passagedata><tw-passagedata pid="52" name="MakingProgressInTheOpen" tags="" position="1488,2289" size="100,100">(set: $distance to $distance - 20){(if: $distance &lt;= 20)[
 	(go-to: &quot;AtEnemyBarbedWireFence&quot;)
@@ -361,7 +355,7 @@ $z[You keep making progress across the barren, war-torn landscape.]
 [[drawsArrow-&gt;FreezesAndDiesByFriend]]
 [[drawsArrow-&gt;ArtilleryShellExplodes]]
 [[drawsArrow-&gt;ShotInTheChest]]
-[[drawsArrow-&gt;MakingProgressInTheOpen]]</tw-passagedata><tw-passagedata pid="54" name="AtEnemyBarbedWireFence" tags="" position="1492,2451" size="100,100">$z[20 meters now, You’re at the enemy&#39;s barbed wire fence. Do you]
+[[drawsArrow-&gt;MakingProgressInTheOpen]]</tw-passagedata><tw-passagedata pid="54" name="AtEnemyBarbedWireFence" tags="" position="1492,2451" size="100,100">$z[20 meters now; You’re at the enemy&#39;s barbed wire fence. Do you]
 
 [[Charge through a gap in their barbed wire defenses-&gt;DeathAtGapInWire]]
 
@@ -375,7 +369,7 @@ $d[(Yes, those existed! Don&#39;t argue with me)]
 
 [[Throw a grenade into the trench before you jump in-&gt;GrenadeLandsAtFeet]]
 
-[[Jump into the trench and start fighting-&gt;EnemyBreachedSection]]</tw-passagedata><tw-passagedata pid="56" name="DeathByHopeThatArtilleryBarrageClearedBarbedWire" tags="" position="1824,2585" size="100,100">Yeah... Shelling the wire first isn’t really going to do much. Looks like I need some protective gloves to fetch your soul. You humans can make my job so difficult...
+[[Jump into the trench and start fighting-&gt;EnemyBreachedSection]]</tw-passagedata><tw-passagedata pid="56" name="DeathByHopeThatArtilleryBarrageClearedBarbedWire" tags="" position="1824,2585" size="100,100">Yeah... Shelling the wire first isn’t really going to do much. Looks like I need some protective gloves to fetch *your* soul. You humans can make my job so difficult...
 
 [[Restart-&gt;Intro]]</tw-passagedata><tw-passagedata pid="57" name="DeathAtGapInWire" tags="" position="1666,2580" size="100,100">To be clear, that gap existing isn’t to say that the aforementioned section of the enemy trench was entirely defenseless when taken as a whole.
 
@@ -420,7 +414,7 @@ $d[Yikes, he really does look like your childhood friend. Maybe that’s because
 
 [[Run him through with your bayonet-&gt;AttackerKilledDefenderInTrench]]
 
-(live: 8s)[[[Can&#39;t bring yourself to do it-&gt;AttackerCantKillDefenderInTrench]]]</tw-passagedata><tw-passagedata pid="65" name="AttackerKilledDefenderInTrench" tags="" position="1761,2943" size="100,100">$y[The other man shows no hesitation and runs you through with his bayonet. But, just before he does, you realize something. Something big!]
+(live: 8s)[[[Freeze-&gt;AttackerCantKillDefenderInTrench]]]</tw-passagedata><tw-passagedata pid="65" name="AttackerKilledDefenderInTrench" tags="" position="1761,2943" size="100,100">$y[The other man shows no hesitation and runs you through with his bayonet. But, just before he does, you realize something. Something big!]
 
 The Answer... Click(click-replace: &quot;Click&quot;)[is 42.
 
@@ -428,9 +422,9 @@ $d[(I hate to burst your bubble, but everyone knows that already.)]
 
 No, actually, you realize that choices in life (as well as this Twine) don’t really matter after all! No matter what, I am at the end of them all. What’s the point?
 
-Well, for what it&#39;s worth, if you humans have taught me anything it&#39;s, that the stories your choices forge enable people to face me with contentment. Maybe not in this case… but one can certainly try their best.
+Well, for what it&#39;s worth, if you humans have taught me anything it&#39;s, that the stories your choices forge enable people to face me with contentment. Maybe not in this case... but one can certainly try their best.
 
-[[Restart-&gt;Intro]]]</tw-passagedata><tw-passagedata pid="66" name="AttackerCantKillDefenderInTrench" tags="" position="1453,2958" size="100,100">$z[For some odd reason you can’t bring yourself to kill this man. What&#39;s even more surprising is that he does not kill you too. He holds his pistol pointed towards you but can’t bring himself to pull the trigger. You stare at each other until slowly he lowers his gun. I suppose the best way to deter me is to look into the depths of another&#39;s eyes.]
+[[Restart-&gt;Intro]]]</tw-passagedata><tw-passagedata pid="66" name="AttackerCantKillDefenderInTrench" tags="" position="1453,2958" size="100,100">$z[For some odd reason, you can’t bring yourself to kill this man. What&#39;s even more surprising is that he doesn&#39;t kill you either. He holds his pistol pointed towards you, but can’t bring himself to pull the trigger. You stare at each other until slowly he lowers his gun. I suppose the best way to lighten my load is to look into the depths of another&#39;s eyes.]
 
 [[Continue-&gt;BothDieTogetherHappy1]]</tw-passagedata><tw-passagedata pid="67" name="BothDieTogetherHappy1" tags="" position="1333,2956" size="100,100">You humans constantly surprise me with your ability to empathize even when surrounded by the cruelty of war. Maybe one day you will finally put aside your pride and learn to live peacefully with each other. I would appreciate not having to clean up after your bloodletting; I am not a what you would call a maid, after all.
 
@@ -440,37 +434,37 @@ Well, for what it&#39;s worth, if you humans have taught me anything it&#39;s, t
 
 This is the happy ending, of course, so, they didn’t. They’re fine. But even so...
 
-[[Restart-&gt;Intro]]</tw-passagedata><tw-passagedata pid="70" name="Patrol" tags="" position="503,897" size="100,100">$a[While on sentry duty you hear something in No Man&#39;s Land. “Hey Officer,” you whisper, “I hear something.” Your officer nods and signals you to come check it out with him. You grab your gear and summit the parapet.]
+[[Restart-&gt;Intro]]</tw-passagedata><tw-passagedata pid="70" name="Patrol" tags="" position="503,897" size="100,100">$a[While on patrol you hear something in No Man&#39;s Land. “Hey, Officer,” you whisper, “I hear something.” Your superior nods and signals for you to come check it out with him. You grab your gear and summit the parapet.]
 
 [[Pass to Officer-&gt;Night encounter]]</tw-passagedata><tw-passagedata pid="71" name="Night encounter" tags="" position="503,1047" size="100,100">$b[While patrolling No Man&#39;s Land your squad encounters an enemy patrol.]
 
 [[Leave them be; No need for excess bloodshed-&gt;encounter pass off 1]]
 
-[[Engage them in hand to hand combat-&gt;encounter pass off 2]]</tw-passagedata><tw-passagedata pid="72" name="enounter soldier nf" tags="" position="391,1252" size="100,100">$a[You come across an enemy patrol repairing barbed wire. You choose to...]
+[[Engage them in hand to hand combat-&gt;encounter pass off 2]]</tw-passagedata><tw-passagedata pid="72" name="enounter soldier nf" tags="" position="391,1252" size="100,100">$a[You come across an enemy patrol repairing barbed wire. You choose to]
 
 [[Instinctively start firing-&gt;barage of fire]]
 
 [[Wait for an officer’s command-&gt;don&#39;t fight]]</tw-passagedata><tw-passagedata pid="73" name="start hand-to-hand" tags="" position="570,1226" size="100,100">$a[You come across an enemy patrol repairing barbed wire. They throw down their rifles and start brawling with your squad
-The enemy officer singles you out and is looking for a |1&gt;[ fight ](click-replace: ?1)[ fight $d[ (maybe he gets a kick out of clocking guys half his size? ya I said it! Your character&#39;s a runt; don&#39;t be ashamed)]]
-He pulls his arm back to take a swing at you.]
+The enemy officer singles you out and is looking for a |1&gt;[fight.] (click: ?1)[$d[ (maybe he gets a kick out of clocking guys half his size?)]] He pulls his arm back to take a swing at you.]
 
 [[“Hey, pick on someone your own size!”-&gt;pick on someone]]
+$d[(Standing around yelling takes time, you&#39;ll probably get hit.)]
 
-[[Duck-&gt;soldier ducks]]</tw-passagedata><tw-passagedata pid="74" name="pick on someone" tags="" position="699,1366" size="100,100">$d[(Why on earth did you pick that option?! For the future, standing around yelling takes time, time you don&#39;t have when a fist is being hurled at one&#39;s face. 
-You should show some initiative, stay on your toes, and fight for your life! You know what? Why do I even bother explaining things to you?)]
+[[Duck-&gt;soldier ducks]]</tw-passagedata><tw-passagedata pid="74" name="pick on someone" tags="" position="699,1366" size="100,100">$d[(Why on earth did you pick that option?! You should show some initiative, stay on your toes, and fight for your life! Why do I even bother explaining things to you?)]
 
-$a[You are beaten and left for dead by the enemy patrol in No Man’s land until the old greek ladies with the twine and the scissors come to cut your |1&gt;[thread](click-replace: ?1)[thread $d[(People often ask if I enjoy working with them. I don’t. They give me the creeps...Unless they’re the ones playing this twine right now, in which case they/you should know I am constantly dripping with irony. You are awesome, and I mean it!)]].]
+$a[You are beaten and left for dead by the enemy patrol in No Man’s land until the old Greek ladies with the twine and the scissors come to cut your |1&gt;[thread].(click: ?1)[ $d[(People often ask if I enjoy working with them. I don’t. They give me the creeps...Unless they’re the ones playing this twine right now, in which case they/you should know I am constantly dripping with irony. You are awesome, and I mean it!)]]]
 
-Start Over(click-goto: &quot;Start Over&quot;, &#39;Intro&#39;)</tw-passagedata><tw-passagedata pid="75" name="soldier ducks" tags="" position="762,1216" size="100,100">[[Pass to Officer-&gt;ducked]]</tw-passagedata><tw-passagedata pid="76" name="ducked" tags="" position="816,1360" size="100,100">b[The person you chose to fight ducks under your first swing ] $d[(this guy is practically a midget)] $b[and aims a blow of his own at your stomach. You double over and then get beaten too a |1&gt;[pulp](click-replace: ?1)[pulp $d[(I wonder if your friend is able to beat you to a pulp in real life too...?)]].]
+Start Over(click-goto: &quot;Start Over&quot;, &#39;Intro&#39;)</tw-passagedata><tw-passagedata pid="75" name="soldier ducks" tags="" position="762,1216" size="100,100">[[Pass to Officer-&gt;ducked]]</tw-passagedata><tw-passagedata pid="76" name="ducked" tags="" position="816,1360" size="100,100">b[The person you chose to fight ducks under your first swing (this guy is practically a midget) and aims a blow of his own at your stomach. You double over and then get beaten to a |1&gt;[pulp].(click: ?1)[ $d[(I wonder if your friend is able to beat you to a pulp in real life too...?)]]]
 
-Start Over(click-goto: &quot;Start Over&quot;, &#39;Intro&#39;)</tw-passagedata><tw-passagedata pid="77" name="barage of fire" tags="" position="234,1386" size="100,100">$d[(Before passing the computer off to the person you is playing the officer pleae click this link: https://www.youtube.com/watch?v=6yzeK4c9Y5g)
-now look over to your friend and say sorry] 
-[[Pass to Officer-&gt;barage of fire officer]]</tw-passagedata><tw-passagedata pid="78" name="don&#39;t fight" tags="" position="807,1650" size="100,100">$a[Both you and the enemy squadron come to a tacit agreement to have never seen each |1&gt;[ other ](click-replace: ?1)[ other $d[ (I wish this live-let-live sentiment was more widespread in war! Less work for me, and you all seem to be happy with it too)]].]
+Start Over(click-goto: &quot;Start Over&quot;, &#39;Intro&#39;)</tw-passagedata><tw-passagedata pid="77" name="barage of fire" tags="" position="234,1386" size="100,100">$d[(Before passing the computer off to the person you is playing the officer pleae go to this link: https://www.youtube.com/watch?v=6yzeK4c9Y5g
 
-[[Hand Off to Officer-&gt;OfficerDawn]] 
-</tw-passagedata><tw-passagedata pid="79" name="barage of fire officer" tags="" position="150,1546" size="100,100">$b[BANG! Someone fired their rifle but you don&#39;t know who|1&gt;[ who ](click-replace: ?1)[ who $d[ (I want you to give a sideways glance at the person doing this twine with you. Not to place blame on anyone but he/she knows what they did. They did something stupid)]].] 
+Now look over to your friend and say sorry.)]
 
-$b[The gunshot heralds a barrage of indiscriminate gunfire from both trenches. (ya thats how you paranoid humans would reacted).)]
+[[Pass to Officer-&gt;barage of fire officer]]</tw-passagedata><tw-passagedata pid="78" name="don&#39;t fight" tags="" position="807,1650" size="100,100">$a[Both you and the enemy squadron come to a tacit agreement to have never seen each |1&gt;[other].(click: ?1)[ $d[(I wish this sentiment was more widespread in war! Less work for me, and you all seem to be happy with it too.)]]]
+
+[[Hand Off to Officer-&gt;OfficerDawn]] </tw-passagedata><tw-passagedata pid="79" name="barage of fire officer" tags="" position="150,1546" size="100,100">$b[BANG! Someone fired their rifle but you don&#39;t know |1&gt;[who]. (click: ?1)[ $d[(Someone making a very poor choice, clearly.)]]]
+
+$b[The gunshot heralds a barrage of indiscriminate gunfire from both trenches.]
 
 (event: when time &gt; 4s)[[[Dive for Cover!!!-&gt;SurvivedBarage]]]
 {
@@ -478,32 +472,32 @@ $b[The gunshot heralds a barrage of indiscriminate gunfire from both trenches. (
 	(go-to: &quot;ShotOnPartrol&quot;)
 	[[drawArrow-&gt;ShotOnPartrol]]
 ]
-}</tw-passagedata><tw-passagedata pid="80" name="encounter pass off 1" tags="" position="342,1093" size="100,100">[[Pass to soldier-&gt;enounter soldier nf]]</tw-passagedata><tw-passagedata pid="81" name="encounter pass off 2" tags="" position="643,1089" size="100,100">[[Pass to soldier-&gt;start hand-to-hand]]</tw-passagedata><tw-passagedata pid="82" name="SurvivedBarage" tags="" position="138,1702" size="100,100">$b[When the rain of bullets ceases, you stand back up and find yourself surrounded by bodies lying limp. How merciless war can be, you think; Fear turns man against all, and the universal sense of self-preservation often leads one to perish… But that’s enough philosophy! |1&gt;[philosophy](click-replace: ?1)[philosophy $d[(If we’re all waxing poetic, I am just going to take the opportunity to interject now and mention how much you humans make my life miserable. More so than, well, me. I mean, look at the mess I’ve got now. Honestly.)]]!]
+}</tw-passagedata><tw-passagedata pid="80" name="encounter pass off 1" tags="" position="342,1093" size="100,100">[[Pass to soldier-&gt;enounter soldier nf]]</tw-passagedata><tw-passagedata pid="81" name="encounter pass off 2" tags="" position="643,1089" size="100,100">[[Pass to soldier-&gt;start hand-to-hand]]</tw-passagedata><tw-passagedata pid="82" name="SurvivedBarage" tags="" position="138,1702" size="100,100">$b[When the rain of bullets ceases, you stand back up and find yourself surrounded by bodies lying limp. How merciless war can be, you think; Fear turns man against all, and the universal sense of self-preservation often leads to everything but... But that’s enough philosophy! |1&gt;[philosophy](click-replace: ?1)[philosophy $d[(If we’re all waxing poetic, I am just going to take the opportunity to interject now and mention how much you humans make my life miserable. More so than, well, me. I mean, look at the mess I’ve got now. Honestly.)]]!]
 
-$b[Oh, wait...hold up, one other person is stirring. You can’t quite tell whose side he is on. Do you...]
+$b[Oh, wait...hold up, one other person is stirring. You can’t quite tell whose side he is on. Do you]
 
 [[Leave him. There’s nothing you can do.-&gt;LeftForDiedTrans]]
 
 [[Help him!-&gt;compassionTrans]]
 $d[Though, to be honest, I’m not sure what you can do.]</tw-passagedata><tw-passagedata pid="83" name="ShotOnPartrol" tags="" position="329,1530" size="100,100">$b[You’ve been shot! Blood is streaming out of your side. I stoop down and drag your soul from your body. Gosh, I guess I will be seeing your mother not too long from now. Urgh, just kidding. That was a little dark.
 
-If you were distracted by my prattle, and missed your chance to dive for cover, don’t be salty. Death never warns anyone.]
+If you were distracted by my prattle, and missed your chance to dive for cover, don’t be too salty. Death rarely warns anyone.]
 
 Start Over(click-goto: &quot;Start Over&quot;, &#39;Intro&#39;)
 </tw-passagedata><tw-passagedata pid="84" name="LeftForDiedTrans" tags="" position="326,1814" size="100,100">$d[Man! Brutal. where is your humanity! I don&#39;t got one, and I have more compassion than that. Why don&#39;t you pass the computer off to to the soldier, so I can break the news he/she has been left for dead]
 
 [[Pass to soldier-&gt;LeftForDied]]</tw-passagedata><tw-passagedata pid="85" name="compassionTrans" tags="" position="333,1679" size="100,100">[[Pass to soldier-&gt;compassion]]</tw-passagedata><tw-passagedata pid="86" name="LeftForDied" tags="" position="468,1820" size="100,100">$a[When you fired, you prompted both trenches to start firing into No Man’s Land again. d$[(Yes, that is a fair response to the dumb stunt you just pulled.)] You are promptly shot in the leg and you crumple to the ground. On the bright side, this has almost certainly saved yourself from more bullet wounds.]
 [[CLICK TO PROCEED-&gt;wounded]] </tw-passagedata><tw-passagedata pid="87" name="compassion" tags="" position="465,1672" size="100,100">$a[When you fired, you prompted both trenches to start firing into No Man’s Land again. $d[(Yes, that is a fair response to the dumb stunt you just pulled.)] You are promptly shot in the leg and you crumple to the ground. On the bright side, this has almost certainly saved yourself from more bullet wounds.]
-[[CLICK TO PROCEED-&gt;compassion2]] </tw-passagedata><tw-passagedata pid="88" name="wounded" tags="" position="599,1821" size="100,100">$a[However, the wound is pretty bad. There is no way you will be able to reposition. You end up bleeding to death in No Man’s Land...But right before you die, you turn to your friend and tell him...You let this happen to me |1&gt;[ You let this happen to me ](click-replace: ?1)[ You let this happen to me $d[ (No, seriously. Turn to your friend in real life and tell him. He or she knows what they did.)]].] 
+[[CLICK TO PROCEED-&gt;compassion2]] </tw-passagedata><tw-passagedata pid="88" name="wounded" tags="" position="599,1821" size="100,100">$a[However, the wound is pretty bad. There is no way you will be able to reposition. You end up bleeding to death in No Man’s Land...But right before you die, you turn to your friend and tell him...You let this happen to me |1&gt;[ You let this happen to me]. (click: ?1)[ $d[(No, seriously. Turn to your friend in real life and tell him. They know what they did.)]]]
 
 [[Restart-&gt;Intro]]</tw-passagedata><tw-passagedata pid="89" name="compassion2" tags="" position="599,1680" size="100,100">$a[Before you can assess the situation, an officer comes up to you and, taking a strip of cloth from a dead soldier, binds your wounds. He helps you to his trench - the enemy trench - but of course you don’t care. You might be a prisoner of war now, and your leg, if we’re being frank, will probably need to be amputated. Still, you&#39;re alive. To see your family again...]
 
 [[CLICK TO PROCEED-&gt;compassion3]] </tw-passagedata><tw-passagedata pid="90" name="falseAlarm" tags="" position="1034,1022" size="100,100">(set: $times to $times + 1)
 
-(if: $times is 1)[$a[Your officer peers out into No Man’s land… Nothing. Except me, collecting humans souls. But that’s normal, and I’m very discreet. Your officer reprimands you.]]\
-(else-if: $times is 2)[$a[Your officer peers out into No Man’s land… Still nothing. Maybe get your hearing checked]]\
+(if: $times is 1)[$a[Your officer peers out into No Man’s Land... Nothing. Except me, collecting humans souls. But that’s normal, and I’m very discreet. Your officer reprimands you.]]\
+(else-if: $times is 2)[$a[Your officer peers out into No Man’s Land... Still nothing. Maybe get your hearing checked?]]\
 (else-if: $times is 3)[$a[I am not trying to tell the story of the boy who cried wolf!!! Please only notify the officer if you hear someone out there. Like footsteps, or wire cutters, or perhaps some|2&gt;[Michael Jackson music](click-replace: ?2)[Michael Jackson music $d[(Well, he probably wasn’t alive during this war. Sorry to get your hopes up.)]].]]\
-(else-if: $times is 4)[$d[(Wait, is there only one audio track in this twine? Ohhh right, sorry, budget cuts. Should have gotten rid of this option. Just ignore it for now)]]\
+(else-if: $times is 4)[$d[(Wait, is there only one audio track in this Twine? Ohhh right, sorry, budget cuts. Should have gotten rid of this option. Just ignore it for now.)]]\
 (else:)[$d[I said ignore it!]]
 
 [[Return to sentry duty-&gt;Sentry]] </tw-passagedata><tw-passagedata pid="91" name="SentryDeadBlackout" tags="Blackout" position="887,942" size="100,100">(live: 3.5s)[
@@ -516,8 +510,9 @@ We got alot of our information from (link: &quot;this video&quot;)[(goto-url: &q
 
 Audio is all from (link: &quot;this video&quot;)[(goto-url: &quot;https://www.youtube.com/watch?v=bGgKdDCJx5o&quot;)]</tw-passagedata><tw-passagedata pid="93" name="compassion3" tags="" position="734,1777" size="100,100">You humans constantly surprise me with your ability to empathize even when surrounded by the cruelty of war. Maybe one day you will finally put aside your pride and learn to live peacefully with each other. I would appreciate not having to clean up after your bloodletting; I am not a what you would call a maid, after all.
 
-[[Continue-&gt;compassion4]]</tw-passagedata><tw-passagedata pid="94" name="compassion4" tags="" position="914,1794" size="100,100">You humans has taught me something in this game. While no series of choices in oe&#39;s life can ever lead one to evade me, choosing compassion and empathy over callous indifference towards others can make life far more bearable for all.
-You humans and your surprises. Maybe I should try to observe other moments in people’s lives besides solely the brief ones preceding their demise. (That kind of research would have definitely help in making this twine)
+[[Continue-&gt;compassion4]]</tw-passagedata><tw-passagedata pid="94" name="compassion4" tags="" position="914,1794" size="100,100">While no series of choices in one&#39;s life can ever lead one to evade me, choosing compassion and empathy over callous indifference towards others can make life far more bearable for all.
+
+You humans and your surprises. Maybe I should try to observe other moments in people’s lives... You know, before the ones detailing their demise. (That kind of research would have definitely helped when I was making this Twine...)
 
 [[Restart-&gt;Intro]]</tw-passagedata><tw-passagedata pid="95" name="SoldierOdds" tags="" position="1842,510" size="100,100">(set: $chanceOfTheDawn to (random: 1,100))
 {(if: 50 &gt;= $chanceOfTheDawn)[
@@ -526,8 +521,8 @@ You humans and your surprises. Maybe I should try to observe other moments in pe
 ](else:)[
     (go-to: &quot;NothingToday&quot;)
 	[[drawArrow-&gt;NothingToday]] 
-]}</tw-passagedata><tw-passagedata pid="96" name="NothingToday" tags="" position="2005,509" size="100,100">[[Handoff to Officer-&gt;BordemOfficer]]</tw-passagedata><tw-passagedata pid="97" name="BordemOfficer" tags="" position="2229,505" size="100,100">$b[Well... The enemy does not appear to be planning any forward assault today. You instruct your men to get breakfast. Afterwards. you inspect all your soldiers’ gear as well as their feet for signs of trench [foot.]&lt;1| (click-replace: ?1)[{foot. 
-$d[(That was a risky click! How did you know I was not going to hide an image of trench foot here. Pictures of trench foot make even my stomach churn, though, and I’m not one to be squeamish. I’m also not one to need a stomach… or anything to eat, for that matter… but here we are.)]}]]
+]}</tw-passagedata><tw-passagedata pid="96" name="NothingToday" tags="" position="2005,509" size="100,100">[[Handoff to Officer-&gt;BordemOfficer]]</tw-passagedata><tw-passagedata pid="97" name="BordemOfficer" tags="" position="2229,505" size="100,100">$b[Well... The enemy does not appear to be planning any forward assaults today. You instruct your men to get breakfast. Afterwards, you inspect all your soldiers’ gear as well as their feet for signs of trench [foot.]&lt;1| (click-replace: ?1)[{foot. 
+$d[(That was a risky click! I&#39;m impressed. Pictures of trench foot make even my stomach churn, though, and I’m not one to be squeamish. I’m also not one to need a stomach... or anything to eat, for that matter... but here we are.)]}]]
 
 |5&gt;[CLICK TO PROCEED](click: ?5)[{
 (if: 50 &gt;= (random: 1,100))[
@@ -544,21 +539,19 @@ During this time you decide to
 [[Play chess-&gt;Chess]]
 [[Write a letter-&gt;Letter]]
 [[Read a book-&gt;Book]]
-[[Play Smash Bros-&gt;Smash]]</tw-passagedata><tw-passagedata pid="99" name="Chess" tags="" position="2009,823" size="100,100">In case you don’t have a chessboard on you I have provided you with a useful link: https://www.chess.com/
+[[Play Smash Bros.-&gt;Smash]]</tw-passagedata><tw-passagedata pid="99" name="Chess" tags="" position="2009,823" size="100,100">In case you don’t have a chessboard on you I have provided you with a useful link: https://www.chess.com/
 That being said, I don’t know if anyone actually brought their chessboards to the front either. Perhaps they played on their laptops using this link!
 
-[[Enough chess-&gt;fullDay]]</tw-passagedata><tw-passagedata pid="100" name="Letter" tags="" position="2159,823" size="100,100">You decide to sit down and write a letter to your family. Here’s a text box you can write your [letter]&lt;1| (click-replace: ?1)[{letter 
-$d[(You’re saying there is no text box? Well yes, even death is plagued by lack of coding knowledge. You do have word on your computer right? Just use that.)]}] in.
+[[That&#39;s enough chess-&gt;fullDay]]</tw-passagedata><tw-passagedata pid="100" name="Letter" tags="" position="2159,823" size="100,100">You decide to sit down and write a letter to your family. Here’s a text box you can write your [letter]&lt;1| in.(click: ?1)[ {$d[(You’re saying there is no text box? Well, yes, even Death is a little new coding Twines. You do have Word on your computer, right? Just use that.)]}]
 
-[[Enough letter writting-&gt;fullDay]] </tw-passagedata><tw-passagedata pid="101" name="Book" tags="" position="2309,823" size="100,100">You go to your sack and pull out a real page turner:
+[[That&#39;s enough non-writing-&gt;fullDay]] </tw-passagedata><tw-passagedata pid="101" name="Book" tags="" position="2309,823" size="100,100">You go to your sack and pull out a real page turner:
 https://books.google.com/books?id=4povVJ-jkCoC&amp;printsec=frontcover&amp;dq=ww1+book+pdf&amp;hl=en&amp;newbks=1&amp;newbks_redir=0&amp;sa=X&amp;ved=2ahUKEwi_l4ro473oAhUtlnIEHdFODy4Q6AEwAXoECAEQAg#v=onepage&amp;q&amp;f=false
 
-[[I have read the book in its entirety and am ready for the pop quiz on the next page.-&gt;fullDay]]</tw-passagedata><tw-passagedata pid="102" name="Smash" tags="" position="2459,823" size="100,100">$d[(jk, that wasn&#39;t a valid option)]
+[[Hits a little too close to home-&gt;fullDay]]</tw-passagedata><tw-passagedata pid="102" name="Smash" tags="" position="2459,823" size="100,100">$d[(JK, that wasn&#39;t a valid option.)]
 
 [[I hate you.-&gt;Bordem1]] 
 
-$d[ya most people do, but if it helps, I will say I main [Pincess Peach]&lt;1| (click-replace: ?1)[Pincess Peach 
-(you thought I was going to say a someone like Ganon &#39;cause my job seems evil. Shame on you. I never choose this role)].]</tw-passagedata><tw-passagedata pid="103" name="fullDay" tags="" position="2246,1004" size="100,100">Wow, you both survived a full day in the trenches!! I was going to code another round of stand to in the evening, but then COVID-19 started, so I had to cut the Twine short.
+$d[Most people do... If it helps, I will say I main [Peach]&lt;1|. (click: ?1)[ $d[(you thought I was going to say a someone like Ganon &#39;cause my job seems evil. Shame on you. I never chose this.)]]]</tw-passagedata><tw-passagedata pid="103" name="fullDay" tags="" position="2246,1004" size="100,100">Wow, you both survived a full day in the trenches. I was going to code another round of &quot;stand to&quot; in the evening, but then COVID-19 started, so I had to cut the Twine short.
 
 Too soon? So is this very abrupt transition to night time.
 
@@ -567,21 +560,22 @@ Too soon? So is this very abrupt transition to night time.
 	(go-to: &quot;Christmas&quot;)
 ](else:)[
     (go-to: &quot;Night&quot;)
-]}</tw-passagedata><tw-passagedata pid="105" name="Christmas" tags="" position="2112,1127" size="100,100">It’s Christmas!!! You and your fellow soldiers sing carols and decorate the parapet with christmas trees. Church services are held behind trench lines and christmas dinners are enjoyed. 
-When Christmas day dawns, the most peculiar thing happened and I can only describe it as being completely human. Framany and Gerance left there trench and talked with one another. They exchanged gifts of jam, whiskey, and buttons. There was even a football match held by the opposing nations at one place along the trench. 
-The joy and friendly atmosphere of christmas gave me a long desired break.
+]}</tw-passagedata><tw-passagedata pid="105" name="Christmas" tags="" position="2112,1127" size="100,100">It’s Christmas! You and your fellow soldiers sing carols and decorate the parapet with trees. Church services are held behind trench lines and Christmas dinners are enjoyed. There is even a football match held by the opposing nations, you hear, at one place along the trench.
+
+The joy and friendly atmosphere of Christmas gave me a long desired break.
 
 [[Next-&gt;ChristmasTwo]]
-</tw-passagedata><tw-passagedata pid="106" name="ChristmasTwo" tags="" position="1942,1125" size="100,100">Generals however see this good spirit mentality as a  danger to the soldier&#39;s fighting spirit, and sure enough your back to shooting at your enemies the next day, and by December 27th I am standing over both you and your friend to take you beyond. 
+</tw-passagedata><tw-passagedata pid="106" name="ChristmasTwo" tags="" position="1942,1125" size="100,100">Sure enough, you&#39;re back to shooting at your enemies the next day.
 
+By December 27th, I am standing over both you and your friend to take you beyond.
 
 [[Restart Game-&gt;Intro]] 
 
 [[Credits-&gt;credit]]</tw-passagedata><tw-passagedata pid="107" name="credit" tags="" position="1942,1275" size="100,100">Connor: Guy in the chair (Designated Coding expert)
 Aidan: The writer will do something (As the twine by that title suggests)
 Ryan: Cheif editor/grammer enforcer
-Jackson: Coordinator/Manager 
-Death: Narrator, Director,and Producer</tw-passagedata><tw-passagedata pid="108" name="Sniper" tags="" position="2821,502" size="100,100">$b[You did a lot of hunting with a scope back in the forest near |1&gt;[Arlesiechtach], the town in which you grew up. (click: ?1)[$d[(I definitely did not just paste Arles and Oberviechtach together. Though, if I did, so what? It looks somewhat convincing.)]]
+Jackson: Coordinator/Manager
+Death: Self-styled Narrator, Director, and Producer</tw-passagedata><tw-passagedata pid="108" name="Sniper" tags="" position="2821,502" size="100,100">$b[You did a lot of hunting with a scope back in the forest near |1&gt;[Arlesiechtach], the town in which you grew up. (click: ?1)[$d[(I definitely did not just paste Arles and Oberviechtach together. Though, if I did, so what? It looks somewhat convincing.)]]
 
 You’re a pretty good sharpshooter, if you say so yourself. $d[(You do.)] You position yourself at a sniping post and patiently observe the enemy trench. Like a cobra ready to |2&gt;[strike]. (click: ?2)[$d[(Do cobras ambush their prey? I should know, but cobras also kill slowly, so who’s to say? Not me.)]]]
 
@@ -598,7 +592,7 @@ You’re a pretty good sharpshooter, if you say so yourself. $d[(You do.)] You p
 
 [[Yes, now shh-&gt;SniperWaiting5]]
 
-|1&gt;[Nah, I&#39;m bored, I&#39;m calling it quites](click: ?1)[
+|1&gt;[Nah, I&#39;m bored, I&#39;m calling it quits](click: ?1)[
 
 $d[(Alright everyone, the sniper’s gone!!! You can all poke your heads out over the trench now! Look at them mocking you. And you call yourself a patient sniper?)]
 
@@ -646,7 +640,7 @@ Of course, an artillery bombardment could also rain down from the sky at any sec
 
 [[Click-&gt;SniperWaits]]</tw-passagedata><tw-passagedata pid="123" name="SniperPeeksOverTrench" tags="" position="2895,2220" size="100,100">$a[Your nerves get the better of you and you dare a glance over the parapet.]
 
-[[Click-&gt;SniperWaits]]</tw-passagedata><tw-passagedata pid="124" name="SniperWaits" tags="" position="2836,2344" size="100,100">$a[Your eyes look out onto the barren landscape of No Man’s Land. How desolate a sight to behold. Mutilated bodies and half-buried limbs lie scattered amongst fragments of trees pummeled and twisted by heavy shelling.  he land has more craters than the moon, you think. This might sound morbid, but I kind of secretly want something to die on another planet so I can go visit it. I don’t know if you realize this, but I only really have the time to see the places people die at. If no one has died there that means I have yet to visit that place. Ain’t that sad… No? Kind of messed up? Touche. If you haven’t noticed, I’m not huge on my job. Of course, I’ve learned to live with it. Pun definitely intended. Boy, the enemy sniper on duty is really holding back. How long have you been reading this? Your head is sticking out of the trench like a carnival game target. One whole minute? Did your friend have to use the restroom a while back? I told him there was this loser sticking his head above the trench. Could that be you? What gives? Maybe I miscoded this part? Weird. Oh well just stick your head back down already so we can move along with the story!]
+[[Click-&gt;SniperWaits]]</tw-passagedata><tw-passagedata pid="124" name="SniperWaits" tags="" position="2836,2344" size="100,100">$a[Your eyes look out onto the barren landscape of No Man’s Land. How desolate a sight to behold. Mutilated bodies and half-buried limbs lie scattered amongst fragments of trees pummeled and twisted by heavy shelling. The land has more craters than the moon, you think.] $d[This might sound morbid, but I kind of secretly want something to die on another planet so I can go visit it. I don’t know if you realize this, but I only really have the time to see the places people die at. If no one has died there that means I have yet to visit that place. Ain’t that sad... No? Kind of messed up? Touche. If you haven’t noticed, I’m not huge on my job. Of course, I’ve learned to live with it. Pun definitely intended. Boy, the enemy sniper on duty is really holding back. How long have you been reading this? Your head is sticking out of the trench like a carnival game target. One whole minute? Did your friend have to use the restroom a while back? I told him there was this loser sticking his head above the trench. Could that be you? What gives? Maybe I miscoded this part? Weird. Oh well just stick your head back down already so we can move along with the story!]
 
 |1&gt;[That&#39;s enough, dude]
 
